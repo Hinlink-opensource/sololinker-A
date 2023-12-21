@@ -1,0 +1,1 @@
+[![Sololinker Firmware build](https://github.com/Hinlink-opensource/sololinker-A/actions/workflows/firmware.yml/badge.svg)](https://github.com/Hinlink-opensource/sololinker-A/actions/workflows/firmware.yml)
