@@ -11,16 +11,20 @@ CURRENT_DIR := $(shell pwd)
 
 PKG_INSTALL_TO_ROOTFS ?= YES
 PKG_NAME := lvgl_app
-PKG_BIN ?= output/release
+PKG_BIN ?= out
 PKG_BUILD ?= build
 
 CURRENT_DIR := $(shell pwd)
 
 # Set the path to the CMake toolchain file
-TOOLCHAIN_FILE := ../cmake/toolchainfile-rv1106.cmake
+ifeq ($(RK_ROOTFS_TYPE), ubuntu)
+	TOOLCHAIN_FILE := ../cmake/toolchainfile-rv1106-glibc.cmake
+else
+	TOOLCHAIN_FILE := ../cmake/toolchainfile-rv1106.cmake
+endif
 
 # Set the install prefix
-INSTALL_PREFIX := release
+INSTALL_PREFIX := $(PKG_BIN)
 
 # Set the source directory
 SOURCE_DIR := ..
@@ -28,7 +32,7 @@ SOURCE_DIR := ..
 all:
 	@echo "Creating output directory..."
 	@mkdir -p output
-	@cd output && cmake -DCMAKE_TOOLCHAIN_FILE=$(TOOLCHAIN_FILE) -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX) $(SOURCE_DIR)
+	@cd output && cmake -DCMAKE_TOOLCHAIN_FILE=$(TOOLCHAIN_FILE) -DCMAKE_INSTALL_PREFIX="$(CURRENT_DIR)/$(PKG_BIN)" $(SOURCE_DIR)
 	@make -C output -j $(nproc)
 	@make -C output install
 	$(call MAROC_COPY_PKG_TO_APP_OUTPUT, $(RK_APP_OUTPUT), $(PKG_BIN))
@@ -38,6 +42,7 @@ install:
 
 clean:
 	@rm -rf output
+	@rm -rf $(CURRENT_DIR)/$(PKG_BIN)
 
 .PHONY: all install clean
 

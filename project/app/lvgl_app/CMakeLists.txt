@@ -54,6 +54,7 @@ target_link_libraries(lvgl_app
     PRIVATE lvgl::demos
     PRIVATE lvgl::examples
     libdrm.a
-    pthread)
+    pthread
+    m)
 
-install(TARGETS lvgl_app DESTINATION oem/usr/bin/)
+install(TARGETS lvgl_app DESTINATION usr/bin/)

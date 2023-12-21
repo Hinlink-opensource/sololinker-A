@@ -19,7 +19,10 @@ export RK_UBOOT_DEFCONFIG=rv1106_defconfig
 export RK_UBOOT_DEFCONFIG_FRAGMENT=rk-emmc.config
 
 # Kernel defconfig
-export RK_KERNEL_DEFCONFIG=rv1106_linux_sololinker_defconfig
+export RK_KERNEL_DEFCONFIG=rv1106_defconfig
+
+# Kernel defconfig fragment
+export RK_KERNEL_DEFCONFIG_FRAGMENT=rv1106-evb.config
 
 # Kernel dts
 export RK_KERNEL_DTS=rv1106g-hinlink-sololinker-a.dts
@@ -31,7 +34,7 @@ export RK_MISC=wipe_all-misc.img
 # RK_CAMERA_SENSOR_IQFILES format:
 #     "iqfile1 iqfile2 iqfile3 ..."
 # ./build.sh media and copy <SDK root dir>/output/out/media_out/isp_iqfiles/$RK_CAMERA_SENSOR_IQFILES
-export RK_CAMERA_SENSOR_IQFILES="sc4336_OT01_40IRC_F16.bin sc3336_CMK-OT2119-PC1_30IRC-F16.bin sc530ai_CMK-OT2115-PC1_30IRC-F16.bin"
+export RK_CAMERA_SENSOR_IQFILES="sc4336_OT01_40IRC_F16.bin sc3336_CMK-OT2119-PC1_30IRC-F16.bin sc530ai_CMK-OT2115-PC1_30IRC-F16.bin gc2093_SIDA209300461_60IRC_F20.bin"
 
 # Config sensor lens CAC calibrattion bin file
 export RK_CAMERA_SENSOR_CAC_BIN="CAC_sc4336_OT01_40IRC_F16 CAC_sc530ai_CMK-OT2115-PC1_30IRC-F16"
@@ -78,4 +81,4 @@ export RK_ENABLE_ROCKCHIP_TEST=y
 
 # enable build wifi
 export RK_ENABLE_WIFI=y
-export RK_ENABLE_WIFI_CHIP=aic8800_usb
+export RK_ENABLE_WIFI_CHIP=AIC8800DW_USB

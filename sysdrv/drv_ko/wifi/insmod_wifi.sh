@@ -28,13 +28,13 @@ if [ "${1}"x = "y"x ];then
 	exit 0
 fi
 
+# install wifi modules for sololinker
 #AIC8800DW
-cat /sys/bus/sdio/devices/*/uevent | grep "8800"
+cat /proc/device-tree/model | grep "SoloLinker"
 if [ $? -eq 0 ];then
 	insmod cfg80211.ko
 	insmod aic_load_fw.ko aic_fw_path=/oem/usr/ko/
 	insmod aic8800_fdrv.ko
-	insmod bcmdhd.ko
 fi
 
 #AP6XXX

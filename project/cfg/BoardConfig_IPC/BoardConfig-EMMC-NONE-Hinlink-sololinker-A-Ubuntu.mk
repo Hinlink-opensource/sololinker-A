@@ -74,11 +74,11 @@ export RK_APP_TYPE=RKIPC_RV1106
 export RK_APP_IPCWEB_BACKEND=y
 
 # enable install app to oem partition
-export RK_BUILD_APP_TO_OEM_PARTITION=y
+export RK_BUILD_APP_TO_OEM_PARTITION=n
 
 # enable rockchip test
 export RK_ENABLE_ROCKCHIP_TEST=y
 
 # enable build wifi
 export RK_ENABLE_WIFI=y
-export RK_ENABLE_WIFI_CHIP=AIC8800
+export RK_ENABLE_WIFI_CHIP=AIC8800DW_USB
